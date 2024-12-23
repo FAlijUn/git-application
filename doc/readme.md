@@ -100,3 +100,8 @@
   git remote show origin
   git remote rename <shortname> <other_shortname>
   git remote remove <shortname> 移除一个远程仓库
+
+### 标签
+  git tag <v0.1> 轻量标签
+  git tag -a <v0.1> -m "xxxx" 附注标签  
+  git push origin <tagname> 创建完标签显示的推送
