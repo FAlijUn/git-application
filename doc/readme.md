@@ -70,4 +70,5 @@
 ### 查看已暂存将要添加到下一次提交里的内容 git diff --staged
 
 ### 先用 git status 看下，你所需要的文件是不是都已暂存起来了， 然后再运行提交命令 git commit
-
+  git commit -m ""
+  git commit -a "" 跳过git add
