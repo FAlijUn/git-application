@@ -105,3 +105,39 @@
   git tag <v0.1> 轻量标签
   git tag -a <v0.1> -m "xxxx" 附注标签  
   git push origin <tagname> 创建完标签显示的推送
+  git push origin :refs/tags/v0.1 | git push origin --delete <tagname> 删除标签 
+  git checkout -b <branch_name> <tag_name>
+
+### 别名
+  ```
+  git config --global alias.co checkout
+  git config --global alias.br branch
+  git config --global alias.ci commit
+  git config --global alias.st status
+  ```
+
+### 分支 git分支包含5个对象 3个blob对象(保存文件快照)，1个树对象(目录结构和blob对象索引)，1个提交对象树对象指针和所有提交信息
+  git branch <branchname> 创建一个分支
+  HEAD指针指向当前所在的本地分支
+  git checkout <branchname> 切换到新创建的分支
+  git checkout -b <branchname> 创建新的分支同时切换过去
+  git merge <branchname> 合并回主线
+  git branch -d <brachname> 删除分支
+  合并冲突 查看冲突文件： 打开有冲突的文件，Git 会在冲突的地方插入冲突标记（通常是 <<<<<<<, =======, >>>>>>>），让你看到不同分支之间的差异
+  git branch --merged 已经合并的分支
+  git branch --no-merged 还没有合并的分支
+
+### 分支开发工作流
+  master 保留完全稳定 已经发布或者即将发布的分支
+  develop/next 开发测试分支，分支不必保持绝对稳定，但是一旦达到稳定状态，它们就可以被合并入 master 分支
+
+### 远程分支
+  git ls-remote <origin> 远程引用的完整列表
+  git branch -u origin/<branch>
+  git push origin --delete <branch> 删除远程分支
+
+### 变基 merge rebase
+  git rebase <branchname> 将提交到某一个分支的所有修改都移到另一个分支上
+  git rebase --onto master server client 取出 client 分支，找出它从 server 分支分歧之后的补丁， 然后把这些补丁在 master 分支上重放一遍，让 client 看起来像直接基于 master 修改一样
+  git pull --rebase
+
