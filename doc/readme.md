@@ -141,3 +141,46 @@
   git rebase --onto master server client 取出 client 分支，找出它从 server 分支分歧之后的补丁， 然后把这些补丁在 master 分支上重放一遍，让 client 看起来像直接基于 master 修改一样
   git pull --rebase
 
+### 服务器上的git
+  本地协议(Local protocol) 其中的远程版本库就是同一主机上的另一个目录 git remote add <远程仓库名> <url>
+
+### 其他工具
+  git log --abbrev-commit --pretty=oneline
+  git show
+  git rev-parse <branchname>
+  git reflog 引用日志
+  git show HEAD^ 查看上一个提交
+  git stash push
+  git stash list
+  git stash apply 将刚刚贮存的进行应用
+  git clean -f -d 移除工作目录中没有被追踪到的文件以及空的子目录
+
+### 签署
+  gpg --gen-key 生成一个密钥
+  git config --global user.signingkey 0A46826A 密钥签署提交
+
+### 搜索
+  git grep
+
+### 重写历史
+  git filter-branch --tree-filter 'rm -f xxx.txt' HEAD 全局修改你的邮箱地址或从每一个提交中移除一个文件
+  --tree-filter 选项在检出项目的每一个提交后运行指定的命令然后重新提交结果
+  全局修改邮箱地址
+  ```
+    git filter-branch --commit-filter '
+        if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
+        then
+                GIT_AUTHOR_NAME="Scott Chacon";
+                GIT_AUTHOR_EMAIL="schacon@example.com";
+                git commit-tree "$@";
+        else
+                git commit-tree "$@";
+        fi' HEAD
+  ```
+
+### 重置
+  git reset <key> 移动 HEAD的指向
+  git commit --amend
+
+## 合并冲突
+  git checkout --conflict=diff3 hello.rb
