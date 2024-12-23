@@ -71,4 +71,32 @@
 
 ### 先用 git status 看下，你所需要的文件是不是都已暂存起来了， 然后再运行提交命令 git commit
   git commit -m ""
-  git commit -a "" 跳过git add
+  git commit -a -m "" 跳过git add
+
+### 移除文件
+  在工作目录下 rm之后再运行git rm
+  具体来说，它会从 Git 的索引（即暂存区）中移除文件，使得 Git 不再跟踪该文件，但文件仍然存在于你的本地文件系统中
+
+### 移动文件
+  git mv file_from file_to 相当于重命名文件
+
+### 查看提交历史
+  git log
+  git log -p 显示每次提交所引入的差异（按 补丁 的格式输出）
+  git log --stat
+  git log --pretty=oneline
+  git log --pretty=format:"%h %s" --graph 展示分支和和并历史
+
+### 撤销操作
+  git commit --amend
+  git reset HEAD <file name> 取消暂存
+  git checkout -- CONTRIBUTING.md 撤销对文件的修改
+
+### 远程仓库的使用
+  git remote 查看远程仓库
+  git remote add <shortname><url> 添加一个新的远程仓库
+  git fetch <origin> 从远程仓库中获取数据
+  git push  <origin> <branch> 推送到远程仓库
+  git remote show origin
+  git remote rename <shortname> <other_shortname>
+  git remote remove <shortname> 移除一个远程仓库
