@@ -184,3 +184,8 @@
 
 ## 合并冲突
   git checkout --conflict=diff3 hello.rb
+
+  git reset --hard HEAD 回到上一次提交的状态
+  git merge -Xignore-space-change whitespace 忽略空白的修改
+  git revert -m 1 HEAD 撤销合并提交 如果你要撤销一个合并提交，可以使用 -m 选项指定合并提交的父提交
+  git revert 命令用于撤销某次提交的更改，并创建一个新的提交来“反做”原有提交的更改
