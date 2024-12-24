@@ -192,3 +192,11 @@
 
 
 ## git 内部原理
+
+### git cherry pick 
+  git cherry-pick <commit-hash>
+  连续多次提交的cherry-pick
+  git cherry-pick <commit-hash1>^..<commit-hash2>
+  多次提交的cherry-pick
+  git cherry-pick <commit-hash1> <commit-hash2> <commit-hash3>
+
